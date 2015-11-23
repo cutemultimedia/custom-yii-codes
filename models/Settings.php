@@ -29,7 +29,7 @@ final class Settings extends \app\base\BaseModel
 					`settings`
 			';
 
-			$response = $this->sql($sql, Enum::ARTIVE_RECORD_TYPE_ARRAY);
+			$response = $this->sql($sql, Enum::ACTIVE_RECORD_TYPE_ARRAY);
 		} else {
 
 			$thisGroup = '';
@@ -49,7 +49,7 @@ final class Settings extends \app\base\BaseModel
 					`settings`.`groups` IN (' . $thisGroup . ')
 			';
 
-			$response = $this->sql($sql, Enum::ARTIVE_RECORD_TYPE_ARRAY);
+			$response = $this->sql($sql, Enum::ACTIVE_RECORD_TYPE_ARRAY);
 		}
 
 		foreach ($response as $key => $value) {

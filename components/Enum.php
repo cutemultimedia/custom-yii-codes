@@ -10,6 +10,6 @@ namespace app\components;
 final class Enum
 {
 	// data response in active record
-	const ARTIVE_RECORD_TYPE_OBJECT = 'object';
-	const ARTIVE_RECORD_TYPE_ARRAY = 'array'; 
+	const ACTIVE_RECORD_TYPE_OBJECT = 'object';
+	const ACTIVE_RECORD_TYPE_ARRAY = 'array'; 
 }

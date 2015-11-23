@@ -100,18 +100,18 @@ abstract class BaseModel extends \yii\db\ActiveRecord
 	 *		[
 	 *			'id' => 1
 	 *		],
-	 *		Enum::ARTIVE_RECORD_TYPE_OBJECT,
+	 *		Enum::ACTIVE_RECORD_TYPE_OBJECT,
 	 *	);
 	 *
 	 * @param array $condition
-	 * @param string $type "array|object" @Enum::ARTIVE_RECORD_TYPE_OBJECT
+	 * @param string $type "array|object" @Enum::ACTIVE_RECORD_TYPE_OBJECT
 	 * @return record
 	 */
 	public function getRecord($condition, $type = 'array')
 	{
-		if($type == Enum::ARTIVE_RECORD_TYPE_OBJECT) {
+		if($type == Enum::ACTIVE_RECORD_TYPE_OBJECT) {
 			return $this->find()->where($condition)->one();
-		} else if($type == Enum::ARTIVE_RECORD_TYPE_ARRAY) {
+		} else if($type == Enum::ACTIVE_RECORD_TYPE_ARRAY) {
 			return $this->find()->where($condition)->asArray()->one();
 		}
 
@@ -124,18 +124,18 @@ abstract class BaseModel extends \yii\db\ActiveRecord
 	 *  $thisObject = new \app\models\ThisObject;
 	 *	$result = $thisObject->sql(
 	 *		$sql,
-	 *		Enum::ARTIVE_RECORD_TYPE_OBJECT,
+	 *		Enum::ACTIVE_RECORD_TYPE_OBJECT,
 	 *	);
 	 *
 	 * @param string $sql
-	 * @param string $sql "array|object" @Enum::ARTIVE_RECORD_TYPE_OBJECT
+	 * @param string $sql "array|object" @Enum::ACTIVE_RECORD_TYPE_OBJECT
 	 * @return record
 	 */
 	public function sql($sql, $type = 'array')
 	{
-		if($type == Enum::ARTIVE_RECORD_TYPE_OBJECT) {
+		if($type == Enum::ACTIVE_RECORD_TYPE_OBJECT) {
 			return $this->findBySql($sql)->all();
-		} else if($type == Enum::ARTIVE_RECORD_TYPE_ARRAY) {
+		} else if($type == Enum::ACTIVE_RECORD_TYPE_ARRAY) {
 			return $this->findBySql($sql)->asArray()->all();
 		}
 
