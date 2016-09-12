@@ -1,7 +1,7 @@
 CREATE TABLE `settings` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`groups` varchar(128) DEFAULT NULL,
-	`keyword` varchar(128) DEFAULT NULL,
+	`keywords` varchar(128) DEFAULT NULL,
 	`value` text,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

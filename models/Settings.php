@@ -10,6 +10,14 @@ use app\components\Enum;
 final class Settings extends \app\base\BaseModel
 {
 	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'settings';
+	}
+
+	/**
 	 * get settings by group
 	 *
 	 * @param $group
@@ -53,7 +61,7 @@ final class Settings extends \app\base\BaseModel
 		}
 
 		foreach ($response as $key => $value) {
-			$settings[$value['groups']][$value['keyword']] = $value['value'];
+			$settings[$value['groups']][$value['keywords']] = $value['value'];
 		}
 
 		return $settings;

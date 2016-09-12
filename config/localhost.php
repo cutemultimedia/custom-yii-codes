@@ -41,9 +41,9 @@ $config = [
 		],
 		'db' => [
 			'class' => 'yii\db\Connection',
-			'dsn' => 'mysql:host=localhost;dbname=databasename',
+			'dsn' => 'mysql:host=localhost;dbname=yii_local',
 			'username' => 'root',
-			'password' => 'root',
+			'password' => 'admin',
 			'charset' => 'utf8',
 		],
 		'redis' => [

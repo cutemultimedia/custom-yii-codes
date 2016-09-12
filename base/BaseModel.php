@@ -23,19 +23,23 @@ abstract class BaseModel extends \yii\db\ActiveRecord
 	 *		]
 	 *	);
 	 *
-	 * @param array $params
-	 * @return pk id
+	 * @param array $values
+	 * @return $pk id
 	 */
-	public function addRecord($params)
+	public function addRecord($values)
 	{
-		foreach ($params as $key => $value) {
-			if($value != '') {
-				$this->$key = $value;
-			}
+		$pk = 0;
+
+		// insert the new record
+		$insert = Yii::$app->db->createCommand()->insert($this->tableName(), $values)->execute();
+
+		//check if success
+		if($insert == true) {
+			//grab the pk value
+			$pk = Yii::$app->db->getLastInsertID();
 		}
 
-		$this->insert();
-		return $this->id;
+		return $pk;
 	}
 
 	/**
@@ -52,24 +56,19 @@ abstract class BaseModel extends \yii\db\ActiveRecord
 	 *		]
 	 *	);
 	 *
-	 * @param array $condition
-	 * @param array $params
+	 * @param array $conditions
+	 * @param array $values
 	 * @return bool
 	 */
-	public function updateRecord($condition, $params)
+	public function updateRecord($conditions, $values)
 	{
-		$record = $this->find()->where($condition)->one();
+		$update = Yii::$app->db->createCommand()->update($this->tableName(), $values, $conditions)->execute();
 
-		foreach ($params as $key => $value) {
-			$record->$key = $value;
-		}
-
-		return $record->save();
+		return $update;
 	}
 
 	/**
-	 * Add a record to specific table
-	 *
+	 * Delete a record to specific table
 	 *
 	 *  $thisObject = new \app\models\ThisObject;
 	 *	$result = $thisObject->deleteRecord(
@@ -78,18 +77,14 @@ abstract class BaseModel extends \yii\db\ActiveRecord
 	 *		]
 	 *	);
 	 *
-	 * @param array $condition
+	 * @param array $conditions
 	 * @return bool
 	 */
-	public function deleteRecord($condition)
+	public function deleteRecord($conditions)
 	{
-		$record = $this->find()->where($condition)->one();
+		$delete = Yii::$app->db->createCommand()->delete($this->tableName(), $conditions)->execute();
 
-		if($record !== NULL) {
-			return $record->delete();
-		}
-
-		return false;
+		return $delete;
 	}
 
 	/**
